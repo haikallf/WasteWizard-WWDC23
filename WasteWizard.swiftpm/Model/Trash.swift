@@ -14,7 +14,7 @@ struct Trash {
 
 extension Trash {
     static let all = [
-        Trash(id: 1, color: .green),
+        Trash(id: 1, color: Color(red: 199/255, green: 222/255, blue: 87/255)),
         Trash(id: 2, color: .yellow),
         Trash(id: 3, color: .red),
         Trash(id: 4, color: .blue),
