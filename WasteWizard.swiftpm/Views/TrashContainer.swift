@@ -11,12 +11,13 @@ struct TrashContainer: View {
     let trash: Trash
     @ObservedObject var viewModel: TrashViewModel
     private let size: CGFloat = 100
-    private let highlightedSize: CGFloat = 120
+    private let highlightedSize: CGFloat = 180
     
     var body: some View {
         ZStack {
-            Circle()
-                .fill(trash.color)
+            Image(systemName: "trash.fill")
+                .resizable()
+                .foregroundColor(trash.color)
                 .frame(width: size, height: size)
                 .overlay {
                     GeometryReader { proxy -> Color in
@@ -31,7 +32,7 @@ struct TrashContainer: View {
             if (viewModel.isHighlighted(id: trash.id)) {
                 Circle()
                     .fill(trash.color)
-                    .opacity(0.5)
+                    .opacity(0.2)
                     .frame(width: highlightedSize, height: highlightedSize)
             }
         }

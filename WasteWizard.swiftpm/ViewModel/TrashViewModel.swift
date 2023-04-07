@@ -22,7 +22,7 @@ class TrashViewModel: ObservableObject {
     
     private var frames: [Int: CGRect] = [:]
     
-    private var trashes = Array(Trash.all.shuffled().prefix(upTo: 3))
+    private var trashes = Array(Trash.all.shuffled().prefix(upTo: 5))
     var trashContainer = Trash.all.shuffled()
     
     func startGame() {
@@ -57,7 +57,7 @@ class TrashViewModel: ObservableObject {
     }
     
     func restartGame() {
-        trashes = Array(Trash.all.shuffled().prefix(upTo: 3))
+        trashes = Array(Trash.all.shuffled().prefix(upTo: 5))
         attempts = 0
         nextRound()
     }

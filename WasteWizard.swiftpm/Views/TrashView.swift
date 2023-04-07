@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TrashView: View {
+    @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = TrashViewModel()
 
     let gridItems = [
@@ -41,6 +42,7 @@ struct TrashView: View {
                     .opacity(viewModel.draggableTrashOpacity)
             }
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             viewModel.startGame()
         }
@@ -48,9 +50,10 @@ struct TrashView: View {
             Text("You won!"),
             isPresented: $viewModel.isGameOver,
             actions: {
-                Button("Go to Home") {
-                    print("Go to Home")
-                }
+                Button(action : { self.presentationMode.wrappedValue.dismiss() }){
+                        Text("Go to Home")
+                    }
+                
                 Button("Start Again") {
                     viewModel.restartGame()
                 }
