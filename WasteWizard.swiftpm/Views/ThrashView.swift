@@ -23,7 +23,9 @@ struct ThrashView: View {
             }
             .onEnded { state in
                 viewModel.update(dragPosition: state.location)
-                viewModel.confirmDrop()
+                withAnimation {
+                    viewModel.confirmDrop()
+                }
             }
     }
     
@@ -34,9 +36,29 @@ struct ThrashView: View {
                     ThrashContainer(thrash: thrash, viewModel: viewModel)
                 }
             }
-            DraggableThrash(thrash: viewModel.currentThrash, position: viewModel.currentPosition, gesture: drag)
+            if let currentThrash = viewModel.currentThrash {
+                DraggableThrash(thrash: currentThrash, position: viewModel.currentPosition, gesture: drag)
+                    .opacity(viewModel.draggableThrashOpacity)
+            }
         }
-        
+        .onAppear {
+            viewModel.startGame()
+        }
+        .alert(
+            Text("You won!"),
+            isPresented: $viewModel.isGameOver,
+            actions: {
+                Button("Go to Home") {
+                    print("Go to Home")
+                }
+                Button("Start Again") {
+                    viewModel.restartGame()
+                }
+            },
+            message: {
+                Text("Attempt(s): \(viewModel.attempts)")
+            }
+        )
     }
 }
 
