@@ -1,5 +1,5 @@
 //
-//  DraggableThrash.swift
+//  DraggableTrash.swift
 //  WasteWizard
 //
 //  Created by Haikal Lazuardi on 06/04/23.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct DraggableThrash<Draggable: Gesture>: View {
-    let thrash: Thrash
+struct DraggableTrash<Draggable: Gesture>: View {
+    let trash: Trash
     
     private let size: CGFloat = 100
     let position: CGPoint
@@ -18,7 +18,7 @@ struct DraggableThrash<Draggable: Gesture>: View {
     
     var body: some View {
         Circle()
-            .fill(thrash.color)
+            .fill(trash.color)
             .frame(width: size, height: size)
             .shadow(radius: 10)
             .position(position)
@@ -26,9 +26,9 @@ struct DraggableThrash<Draggable: Gesture>: View {
     }
 }
 
-struct DraggableThrash_Previews: PreviewProvider {
+struct DraggableTrash_Previews: PreviewProvider {
     static var previews: some View {
-        DraggableThrash(thrash: Thrash.all.first!, position: CGPoint(x: 100, y: 100),
+        DraggableTrash(trash: Trash.all.first!, position: CGPoint(x: 100, y: 100),
                         gesture: DragGesture())
     }
 }

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-class ThrashViewModel: ObservableObject {
-    @Published var currentThrash: Thrash?
+class TrashViewModel: ObservableObject {
+    @Published var currentTrash: Trash?
     @Published var currentPosition = initialPosition
     @Published var highlightedId: Int?
-    @Published var draggableThrashOpacity: CGFloat = 1.0
+    @Published var draggableTrashOpacity: CGFloat = 1.0
     @Published var isGameOver: Bool = false
     private(set) var attempts = 0
     
@@ -22,17 +22,17 @@ class ThrashViewModel: ObservableObject {
     
     private var frames: [Int: CGRect] = [:]
     
-    private var thrashes = Array(Thrash.all.shuffled().prefix(upTo: 3))
-    var thrashContainer = Thrash.all.shuffled()
+    private var trashes = Array(Trash.all.shuffled().prefix(upTo: 3))
+    var trashContainer = Trash.all.shuffled()
     
     func startGame() {
-        currentThrash = thrashes.popLast()
+        currentTrash = trashes.popLast()
     }
     
     func nextRound() {
-        currentThrash = thrashes.popLast()
+        currentTrash = trashes.popLast()
         
-        if (currentThrash == nil) {
+        if (currentTrash == nil) {
             gameOver()
         } else {
             prepareNextRound()
@@ -45,19 +45,19 @@ class ThrashViewModel: ObservableObject {
     
     func prepareNextRound() {
         withAnimation {
-            thrashContainer.shuffle()
+            trashContainer.shuffle()
         }
         
         withAnimation(.none) {
             resetPosition()
             withAnimation {
-                draggableThrashOpacity = 1.0
+                draggableTrashOpacity = 1.0
             }
         }
     }
     
     func restartGame() {
-        thrashes = Array(Thrash.all.shuffled().prefix(upTo: 3))
+        trashes = Array(Trash.all.shuffled().prefix(upTo: 3))
         attempts = 0
         nextRound()
     }
@@ -86,12 +86,12 @@ class ThrashViewModel: ObservableObject {
             return
         }
         
-        if (highlightedId == currentThrash?.id) {
+        if (highlightedId == currentTrash?.id) {
             guard let frame = frames[highlightedId] else {
                 return
             }
             currentPosition = CGPoint(x: frame.midX, y: frame.midY)
-            draggableThrashOpacity = 0
+            draggableTrashOpacity = 0
             nextRound()
         } else {
             resetPosition()
@@ -100,7 +100,7 @@ class ThrashViewModel: ObservableObject {
     }
     
     func resetPosition() {
-        currentPosition = ThrashViewModel.initialPosition
+        currentPosition = TrashViewModel.initialPosition
     }
     
     func isHighlighted(id: Int) -> Bool {

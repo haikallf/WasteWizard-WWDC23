@@ -7,30 +7,30 @@
 
 import SwiftUI
 
-struct ThrashContainer: View {
-    let thrash: Thrash
-    @ObservedObject var viewModel: ThrashViewModel
+struct TrashContainer: View {
+    let trash: Trash
+    @ObservedObject var viewModel: TrashViewModel
     private let size: CGFloat = 100
     private let highlightedSize: CGFloat = 120
     
     var body: some View {
         ZStack {
             Circle()
-                .fill(thrash.color)
+                .fill(trash.color)
                 .frame(width: size, height: size)
                 .overlay {
                     GeometryReader { proxy -> Color in
                         viewModel.update(
                             frame: proxy.frame(in: .global),
-                            for: thrash.id
+                            for: trash.id
                         )
                         
                         return Color.clear
                     }
                 }
-            if (viewModel.isHighlighted(id: thrash.id)) {
+            if (viewModel.isHighlighted(id: trash.id)) {
                 Circle()
-                    .fill(thrash.color)
+                    .fill(trash.color)
                     .opacity(0.5)
                     .frame(width: highlightedSize, height: highlightedSize)
             }
@@ -40,8 +40,8 @@ struct ThrashContainer: View {
     }
 }
 
-struct ThrashContainer_Previews: PreviewProvider {
+struct TrashContainer_Previews: PreviewProvider {
     static var previews: some View {
-        ThrashContainer(thrash: Thrash.all.first!, viewModel: ThrashViewModel())
+        TrashContainer(trash: Trash.all.first!, viewModel: TrashViewModel())
     }
 }

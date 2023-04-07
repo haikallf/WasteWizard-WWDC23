@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ThrashView: View {
-    @StateObject private var viewModel = ThrashViewModel()
+struct TrashView: View {
+    @StateObject private var viewModel = TrashViewModel()
 
     let gridItems = [
         GridItem(.flexible()),
@@ -32,13 +32,13 @@ struct ThrashView: View {
     var body: some View {
         ZStack {
             LazyVGrid(columns: gridItems, spacing: 100) {
-                ForEach(viewModel.thrashContainer, id: \.id) { thrash in
-                    ThrashContainer(thrash: thrash, viewModel: viewModel)
+                ForEach(viewModel.trashContainer, id: \.id) { trash in
+                    TrashContainer(trash: trash, viewModel: viewModel)
                 }
             }
-            if let currentThrash = viewModel.currentThrash {
-                DraggableThrash(thrash: currentThrash, position: viewModel.currentPosition, gesture: drag)
-                    .opacity(viewModel.draggableThrashOpacity)
+            if let currentTrash = viewModel.currentTrash {
+                DraggableTrash(trash: currentTrash, position: viewModel.currentPosition, gesture: drag)
+                    .opacity(viewModel.draggableTrashOpacity)
             }
         }
         .onAppear {
@@ -62,8 +62,8 @@ struct ThrashView: View {
     }
 }
 
-struct ThrashView_Previews: PreviewProvider {
+struct TrashView_Previews: PreviewProvider {
     static var previews: some View {
-        ThrashView()
+        TrashView()
     }
 }
