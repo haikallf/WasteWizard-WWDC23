@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Plastic-Person-min.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
