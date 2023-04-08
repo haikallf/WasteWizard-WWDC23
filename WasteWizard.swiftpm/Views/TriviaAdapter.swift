@@ -13,16 +13,16 @@ struct TriviaAdapter: View {
     
     var body: some View {
         VStack {
-            
-            Image(systemName: "trash.fill")
+            Image(trivia.filename)
                 .resizable()
-                .frame(width: 250, height: 300)
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 700)
                 .foregroundColor(trivia.color)
-                .padding(.top, 400)
+                .padding(.top, 100)
             
             Text(trivia.title.uppercased())
                 .font(globalStates.getFont(weight: "Bold", size: 48))
-                .foregroundColor(Color(red: 103/255, green: 116/255, blue: 62/255))
+                .foregroundColor(Color("darkGreen"))
                 .padding(.top, 60)
             
             Text(trivia.text)

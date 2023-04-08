@@ -10,15 +10,16 @@ import SwiftUI
 struct TrashContainer: View {
     let trash: Trash
     @ObservedObject var viewModel: TrashViewModel
-    private let size: CGFloat = 100
-    private let highlightedSize: CGFloat = 180
+    private let size: CGFloat = 150
+    private let highlightedSize: CGFloat = 220
     
     var body: some View {
         ZStack {
-            Image(systemName: "trash.fill")
+            Image(trash.filename)
                 .resizable()
+                .aspectRatio(contentMode: .fit)
                 .foregroundColor(trash.color)
-                .frame(width: size, height: size)
+                .frame(height: size)
                 .overlay {
                     GeometryReader { proxy -> Color in
                         viewModel.update(

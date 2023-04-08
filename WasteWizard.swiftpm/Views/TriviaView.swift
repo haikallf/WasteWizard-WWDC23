@@ -11,7 +11,7 @@ struct TriviaView: View {
     
     var body: some View {
         ZStack {
-            Color(red: 127/255, green: 178/255, blue: 109/255)
+            Color("primaryGreen")
                 .ignoresSafeArea()
             
             if globalStates.isLandScape {
@@ -22,17 +22,17 @@ struct TriviaView: View {
                     .foregroundColor(.white)
             }
             
-            VStack {
-                HStack {
-                    Text("Did you know that...")
-                        .font(globalStates.getFont(weight: "Bold", size: 66))
-                        .foregroundColor(.white)
-                        .padding(.top, 100)
-                    Spacer()
-                }
-                
-                Spacer()
-            } .padding()
+//            VStack {
+//                HStack {
+//                    Text("Did you know that...")
+//                        .font(globalStates.getFont(weight: "Bold", size: 66))
+//                        .foregroundColor(.white)
+//                        .padding(.top, 100)
+//                    Spacer()
+//                }
+//
+//                Spacer()
+//            } .padding()
             
             TabView(selection: $pageIndex) {
                 ForEach(trivias, id: \.id) { trivia in
@@ -44,7 +44,7 @@ struct TriviaView: View {
                             Button(action: goToFirst) {
                                 Text("Go to First")
                                     .padding()
-                                    .background(Color(red: 127/255, green: 178/255, blue: 109/255))
+                                    .background(Color("primaryGreen"))
                                     .cornerRadius(15)
                                     .foregroundColor(.white)
                                     .font(globalStates.getFont(weight: "Regular", size: 24))
@@ -54,7 +54,7 @@ struct TriviaView: View {
                             Button(action: incrementPage) {
                                 Text("Next")
                                     .padding()
-                                    .background(Color(red: 127/255, green: 178/255, blue: 109/255))
+                                    .background(Color("primaryGreen"))
                                     .cornerRadius(15)
                                     .foregroundColor(.white)
                                     .font(globalStates.getFont(weight: "Regular", size: 24))
@@ -71,7 +71,7 @@ struct TriviaView: View {
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .interactive))
             .onAppear {
-                dotAppearance.currentPageIndicatorTintColor = UIColor(Color(red: 220/255, green: 101/255, blue: 32/255))
+                dotAppearance.currentPageIndicatorTintColor = UIColor(Color("orange"))
                 dotAppearance.pageIndicatorTintColor = .gray
             }
         }

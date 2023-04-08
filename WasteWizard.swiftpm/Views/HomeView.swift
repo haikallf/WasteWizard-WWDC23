@@ -17,18 +17,18 @@ struct HomeView: View {
                 Image(systemName: "trash.fill")
                     .resizable()
                     .frame(width: 200, height: 200)
-                    .foregroundColor(Color(red: 199/255, green: 222/255, blue: 87/255))
+                    .foregroundColor(Color("lightGreen"))
                 
                 Text("Waste Wizard")
                     .font(globalStates.getFont(weight: "Bold", size: 80.0))
-                    .foregroundColor(Color(red: 103/255, green: 116/255, blue: 62/255))
+                    .foregroundColor(Color("darkGreen"))
                     .font(.system(size: 80))
                 
                 HStack {
                     NavigationLink(destination: TrashView()) {
                         Text("Play")
                             .padding()
-                            .background(Color(red: 127/255, green: 178/255, blue: 109/255))
+                            .background(Color("primaryGreen"))
                             .foregroundColor(.white)
                             .font(.system(size: 32))
                             .cornerRadius(15)
@@ -39,7 +39,7 @@ struct HomeView: View {
                     NavigationLink(destination: TriviaView()) {
                         Text("Trivia")
                             .padding()
-                            .background(Color(red: 127/255, green: 178/255, blue: 109/255))
+                            .background(Color("primaryGreen"))
                             .foregroundColor(.white)
                             .font(.system(size: 32))
                             .cornerRadius(15)

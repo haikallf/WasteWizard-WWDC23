@@ -10,14 +10,15 @@ import SwiftUI
 struct Trash {
     let id: Int
     let color: Color
+    let filename: String
 }
 
 extension Trash {
     static let all = [
-        Trash(id: 1, color: Color(red: 199/255, green: 222/255, blue: 87/255)),
-        Trash(id: 2, color: .yellow),
-        Trash(id: 3, color: .red),
-        Trash(id: 4, color: .blue),
-        Trash(id: 5, color: .gray),
+        Trash(id: 1, color: Color("primaryGreen"), filename: "Green-TrashBin"),
+        Trash(id: 2, color: Color("Yellow"), filename: "Yellow-TrashBin"),
+        Trash(id: 3, color: Color("Red"), filename: "Red-TrashBin"),
+        Trash(id: 4, color: Color("Blue"), filename: "Blue-TrashBin"),
+        Trash(id: 5, color: Color("Gray"), filename: "Gray-TrashBin"),
     ]
 }
