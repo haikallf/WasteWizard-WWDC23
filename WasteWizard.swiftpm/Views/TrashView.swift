@@ -45,12 +45,14 @@ struct TrashView: View {
             
             HStack {
                 VStack (alignment: .leading) {
-                        Text("Place the waste to the right trash can")
-                            .font(globalStates.getFont(weight: "Bold", size: 36))
-                            .foregroundColor(Color("darkGreen"))
-                            .padding(.top, 100)
+                    Text("Place the waste to the right trash can")
+                        .font(globalStates.getFont(weight: "Bold", size: 36))
+                        .foregroundColor(Color("darkGreen"))
+                        .padding(.top, 100)
                         
                     Text("Attempt(s): \(viewModel.attempts)")
+                        .font(globalStates.getFont(weight: "Regular", size: 24))
+                        .foregroundColor(Color("darkGreen"))
                     Spacer()
                 }
                 Spacer()
@@ -58,6 +60,16 @@ struct TrashView: View {
             .padding([.leading, .trailing], 36)
         }
         .navigationBarBackButtonHidden(true)
+        .navigationBarItems( leading:
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                HStack {
+                    Image(systemName: "chevron.backward")
+                    Text("Back")
+                        
+                }.foregroundColor(Color("darkGreen"))
+        })
         .onAppear {
             viewModel.startGame()
         }

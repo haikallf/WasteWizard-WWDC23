@@ -15,30 +15,23 @@ struct TriviaView: View {
                 .ignoresSafeArea()
             
             if globalStates.isLandScape {
-                getSinWave()
+                getSinWave(baseline: UIScreen.main.bounds.height * 0.35)
                     .foregroundColor(.white)
             } else {
                 getSinWave()
                     .foregroundColor(.white)
             }
             
-//            VStack {
-//                HStack {
-//                    Text("Did you know that...")
-//                        .font(globalStates.getFont(weight: "Bold", size: 66))
-//                        .foregroundColor(.white)
-//                        .padding(.top, 100)
-//                    Spacer()
-//                }
-//
-//                Spacer()
-//            } .padding()
-            
             TabView(selection: $pageIndex) {
                 ForEach(trivias, id: \.id) { trivia in
                     VStack {
                         Spacer()
-                        TriviaAdapter(trivia: trivia)
+                        
+                        if globalStates.isLandScape {
+                            TriviaAdapter(trivia: trivia, height: 400.0)
+                        } else {
+                            TriviaAdapter(trivia: trivia, height: 700.0)
+                        }
                         
                         if (trivia == trivias.last) {
                             Button(action: goToFirst) {

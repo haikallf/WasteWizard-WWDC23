@@ -10,13 +10,14 @@ import SwiftUI
 struct TriviaAdapter: View {
     @EnvironmentObject var globalStates: GlobalStates
     var trivia: Trivia
+    var height: CGFloat
     
     var body: some View {
         VStack {
             Image(trivia.filename)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 700)
+                .frame(height: height)
                 .foregroundColor(trivia.color)
                 .padding(.top, 100)
             
@@ -38,6 +39,6 @@ struct TriviaAdapter: View {
 
 struct TriviaAdapter_Previews: PreviewProvider {
     static var previews: some View {
-        TriviaAdapter(trivia: Trivia.all.first!).environmentObject(GlobalStates())
+        TriviaAdapter(trivia: Trivia.all.first!, height: 700.0).environmentObject(GlobalStates())
     }
 }

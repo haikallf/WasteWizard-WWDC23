@@ -52,8 +52,6 @@ struct HomeView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.white)
     }
-    
-    
 }
 
 struct HomeView_Previews: PreviewProvider {
