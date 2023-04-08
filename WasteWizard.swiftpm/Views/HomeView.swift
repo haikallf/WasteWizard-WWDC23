@@ -13,41 +13,42 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Image(systemName: "trash.fill")
+            ZStack {
+                Image("HomeBg")
                     .resizable()
-                    .frame(width: 200, height: 200)
-                    .foregroundColor(Color("lightGreen"))
-                
-                Text("Waste Wizard")
-                    .font(globalStates.getFont(weight: "Bold", size: 80.0))
-                    .foregroundColor(Color("darkGreen"))
-                    .font(.system(size: 80))
-                
-                HStack {
-                    NavigationLink(destination: TrashView()) {
-                        Text("Play")
-                            .padding()
-                            .background(Color("primaryGreen"))
-                            .foregroundColor(.white)
-                            .font(.system(size: 32))
-                            .cornerRadius(15)
-                            .padding(.trailing, 20)
-                            
-                    }
+                    .ignoresSafeArea()
+                VStack {
+                    Image("Logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 600)
+                        .foregroundColor(Color("lightGreen"))
                     
-                    NavigationLink(destination: TriviaView()) {
-                        Text("Trivia")
-                            .padding()
-                            .background(Color("primaryGreen"))
-                            .foregroundColor(.white)
-                            .font(.system(size: 32))
-                            .cornerRadius(15)
-                            .padding(.leading, 20)
+                    HStack {
+                        NavigationLink(destination: TrashView()) {
+                            Text("Play")
+                                .padding()
+                                .background(Color("primaryGreen"))
+                                .foregroundColor(.white)
+                                .font(globalStates.getFont(weight: "Regular", size: 32))
+                                .cornerRadius(15)
+                                .padding(.trailing, 20)
+                        }
+                        
+                        NavigationLink(destination: TriviaView()) {
+                            Text("Trivia")
+                                .padding()
+                                .background(Color("primaryGreen"))
+                                .foregroundColor(.white)
+                                .font(globalStates.getFont(weight: "Regular", size: 32))
+                                .cornerRadius(15)
+                                .padding(.leading, 20)
+                        }
                     }
+                    .padding()
                 }
-                .padding()
             }
+            
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.white)
