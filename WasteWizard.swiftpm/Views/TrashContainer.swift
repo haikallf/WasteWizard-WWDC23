@@ -38,6 +38,8 @@ struct TrashContainer: View {
             }
         }
         .frame(width: highlightedSize, height: highlightedSize)
+//        .offset(x: viewModel.isWrongTrashBin && viewModel.highlightedId == trash.id ? -8 : 0)
+//        .animation(Animation.default.repeatCount(3, autoreverses: true).speed(6))
         
     }
 }

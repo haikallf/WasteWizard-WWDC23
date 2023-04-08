@@ -10,7 +10,7 @@ import SwiftUI
 struct DraggableTrash<Draggable: Gesture>: View {
     let trash: Trash
     
-    private let size: CGFloat = 100
+    private let size: CGFloat = 150
     let position: CGPoint
     let gesture: Draggable
     

@@ -10,6 +10,7 @@ import SwiftUI
 struct TrashView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = TrashViewModel()
+    @EnvironmentObject var globalStates: GlobalStates
 
     let gridItems = [
         GridItem(.flexible()),
@@ -41,6 +42,20 @@ struct TrashView: View {
                 DraggableTrash(trash: currentTrash, position: viewModel.currentPosition, gesture: drag)
                     .opacity(viewModel.draggableTrashOpacity)
             }
+            
+            HStack {
+                VStack (alignment: .leading) {
+                        Text("Place the waste to the right trash can")
+                            .font(globalStates.getFont(weight: "Bold", size: 36))
+                            .foregroundColor(Color("darkGreen"))
+                            .padding(.top, 100)
+                        
+                    Text("Attempt(s): \(viewModel.attempts)")
+                    Spacer()
+                }
+                Spacer()
+            }
+            .padding([.leading, .trailing], 36)
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
@@ -67,6 +82,6 @@ struct TrashView: View {
 
 struct TrashView_Previews: PreviewProvider {
     static var previews: some View {
-        TrashView()
+        TrashView().environmentObject(GlobalStates())
     }
 }

@@ -13,11 +13,12 @@ class TrashViewModel: ObservableObject {
     @Published var highlightedId: Int?
     @Published var draggableTrashOpacity: CGFloat = 1.0
     @Published var isGameOver: Bool = false
+    @Published var isWrongTrashBin: Bool = false
     private(set) var attempts = 0
     
     private static let initialPosition = CGPoint(
         x: UIScreen.main.bounds.midX,
-        y: UIScreen.main.bounds.maxY - 100
+        y: UIScreen.main.bounds.maxY - 200
     )
     
     private var frames: [Int: CGRect] = [:]
@@ -68,10 +69,19 @@ class TrashViewModel: ObservableObject {
         // Detects if the draggable item touching the container
         for (id, frame) in frames where (frame.contains(dragPosition)) {
             highlightedId = id
+            wrongTrashBin()
             return
         }
         highlightedId = nil
         
+    }
+    
+    func wrongTrashBin() {
+        if (currentTrash?.id != highlightedId) {
+            isWrongTrashBin = true
+        } else {
+            isWrongTrashBin = false
+        }
     }
     
     func confirmDrop() {
@@ -82,6 +92,7 @@ class TrashViewModel: ObservableObject {
             return
         }
         
+        wrongTrashBin()
         if (highlightedId == currentTrash?.id) {
             guard let frame = frames[highlightedId] else {
                 return
