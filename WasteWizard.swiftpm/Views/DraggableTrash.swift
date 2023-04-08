@@ -17,9 +17,10 @@ struct DraggableTrash<Draggable: Gesture>: View {
     
     
     var body: some View {
-        Circle()
-            .fill(trash.color)
-            .frame(width: size, height: size)
+        Image(trash.waste)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(height: size)
             .shadow(radius: 10)
             .position(position)
             .gesture(gesture)

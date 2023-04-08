@@ -44,10 +44,6 @@ class TrashViewModel: ObservableObject {
     }
     
     func prepareNextRound() {
-        withAnimation {
-            trashContainer.shuffle()
-        }
-        
         withAnimation(.none) {
             resetPosition()
             withAnimation {
