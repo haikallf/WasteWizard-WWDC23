@@ -14,9 +14,13 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                Color.white
+                    .ignoresSafeArea()
+                
                 Image("HomeBg")
                     .resizable()
                     .ignoresSafeArea()
+                
                 VStack {
                     Image("Logo")
                         .resizable()

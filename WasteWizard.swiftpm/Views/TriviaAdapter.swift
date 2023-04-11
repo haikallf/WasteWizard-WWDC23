@@ -11,6 +11,7 @@ struct TriviaAdapter: View {
     @EnvironmentObject var globalStates: GlobalStates
     var trivia: Trivia
     var height: CGFloat
+    var isLandscape: Bool
     
     var body: some View {
         VStack {
@@ -22,12 +23,12 @@ struct TriviaAdapter: View {
                 .padding(.top, 100)
             
             Text(trivia.title.uppercased())
-                .font(globalStates.getFont(weight: "Bold", size: 48))
+                .font(globalStates.getFont(weight: "Bold", size: isLandscape ? 40 : 44))
                 .foregroundColor(Color("darkGreen"))
                 .padding(.top, 60)
             
             Text(trivia.text)
-                .font(globalStates.getFont(weight: "Regular", size: 32))
+                .font(globalStates.getFont(weight: "Regular", size: isLandscape ? 24 : 28))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
                 .foregroundColor(.brown)
@@ -39,6 +40,6 @@ struct TriviaAdapter: View {
 
 struct TriviaAdapter_Previews: PreviewProvider {
     static var previews: some View {
-        TriviaAdapter(trivia: Trivia.all.first!, height: 700.0).environmentObject(GlobalStates())
+        TriviaAdapter(trivia: Trivia.all.first!, height: 700.0, isLandscape: false).environmentObject(GlobalStates())
     }
 }

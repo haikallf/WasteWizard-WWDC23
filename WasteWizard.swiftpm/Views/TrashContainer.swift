@@ -20,6 +20,17 @@ struct TrashContainer: View {
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(trash.color)
                 .frame(height: size)
+                
+            if (viewModel.isHighlighted(id: trash.id)) {
+                Circle()
+                    .fill(trash.color)
+                    .opacity(0.2)
+                    .frame(width: highlightedSize, height: highlightedSize)
+            }
+            Circle()
+                .fill(trash.color)
+                .opacity(0)
+                .frame(width: size, height: size)
                 .overlay {
                     GeometryReader { proxy -> Color in
                         viewModel.update(
@@ -30,12 +41,6 @@ struct TrashContainer: View {
                         return Color.clear
                     }
                 }
-            if (viewModel.isHighlighted(id: trash.id)) {
-                Circle()
-                    .fill(trash.color)
-                    .opacity(0.2)
-                    .frame(width: highlightedSize, height: highlightedSize)
-            }
         }
         .frame(width: highlightedSize, height: highlightedSize)
 //        .offset(x: viewModel.isWrongTrashBin && viewModel.highlightedId == trash.id ? -8 : 0)

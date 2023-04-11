@@ -33,6 +33,25 @@ struct TrashView: View {
     
     var body: some View {
         ZStack {
+            Color.white
+                .ignoresSafeArea()
+            
+            VStack {
+                HStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                            Text("Back")
+                            
+                        }.foregroundColor(Color("darkGreen"))
+                    }
+                    Spacer()
+                }
+                Spacer()
+            }.padding()
+            
             LazyVGrid(columns: gridItems, spacing: 100) {
                 ForEach(viewModel.trashContainer, id: \.id) { trash in
                     TrashContainer(trash: trash, viewModel: viewModel)
@@ -60,16 +79,6 @@ struct TrashView: View {
             .padding([.leading, .trailing], 36)
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems( leading:
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                HStack {
-                    Image(systemName: "chevron.backward")
-                    Text("Back")
-                        
-                }.foregroundColor(Color("darkGreen"))
-        })
         .onAppear {
             viewModel.startGame()
         }

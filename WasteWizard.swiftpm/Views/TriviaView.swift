@@ -28,9 +28,9 @@ struct TriviaView: View {
                         Spacer()
                         
                         if globalStates.isLandScape {
-                            TriviaAdapter(trivia: trivia, height: 400.0)
+                            TriviaAdapter(trivia: trivia, height: UIScreen.main.bounds.height * 0.38, isLandscape: globalStates.isLandScape)
                         } else {
-                            TriviaAdapter(trivia: trivia, height: 700.0)
+                            TriviaAdapter(trivia: trivia, height: UIScreen.main.bounds.height * 0.45, isLandscape: globalStates.isLandScape)
                         }
                         
                         if (trivia == trivias.last) {
