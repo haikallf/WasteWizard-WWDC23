@@ -22,10 +22,24 @@ struct TrashContainer: View {
                 .frame(height: size)
                 
             if (viewModel.isHighlighted(id: trash.id)) {
-                Circle()
-                    .fill(trash.color)
-                    .opacity(0.2)
-                    .frame(width: highlightedSize, height: highlightedSize)
+//                Circle()
+//                    .fill(trash.color)
+//                    .opacity(0.2)
+//                    .frame(width: highlightedSize, height: highlightedSize)
+                
+                if (viewModel.currentTrash?.id != trash.id) {
+                    Image(systemName: "x.circle")
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                        .foregroundColor(Color("Red"))
+                        .shadow(radius: 4)
+                } else {
+                    Image(systemName: "checkmark.circle")
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                        .foregroundColor(Color("primaryGreen"))
+                        .shadow(radius: 4)
+                }
             }
             Circle()
                 .fill(trash.color)

@@ -14,7 +14,9 @@ class TrashViewModel: ObservableObject {
     @Published var draggableTrashOpacity: CGFloat = 1.0
     @Published var isGameOver: Bool = false
     @Published var isWrongTrashBin: Bool = false
+    @Published var numberOfRounds: Int = 5
     private(set) var attempts = 0
+    private(set) var rounds = 1
     
     private static let initialPosition = CGPoint(
         x: UIScreen.main.bounds.midX,
@@ -56,6 +58,7 @@ class TrashViewModel: ObservableObject {
     func restartGame() {
         trashes = Array(Trash.all.shuffled().prefix(upTo: 5))
         attempts = 0
+        rounds = 1
         nextRound()
     }
     
@@ -100,6 +103,9 @@ class TrashViewModel: ObservableObject {
             currentPosition = CGPoint(x: frame.midX, y: frame.midY)
             draggableTrashOpacity = 0
             nextRound()
+            if (rounds != 5) {
+                rounds += 1
+            }
         } else {
             resetPosition()
         }

@@ -72,6 +72,10 @@ struct TrashView: View {
                     Text("Attempt(s): \(viewModel.attempts)")
                         .font(globalStates.getFont(weight: "Regular", size: 24))
                         .foregroundColor(Color("darkGreen"))
+                    
+                    Text("Round(s): \(viewModel.rounds) / 5")
+                        .font(globalStates.getFont(weight: "Regular", size: 24))
+                        .foregroundColor(Color("darkGreen"))
                     Spacer()
                 }
                 Spacer()
