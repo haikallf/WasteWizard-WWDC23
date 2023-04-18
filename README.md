@@ -36,3 +36,9 @@ This app was created by Haikal Lazuardi Fadil and makes use of the following res
 4. [Waste](https://www.freepik.com/free-vector/flat-recycling-landing-page-template_4976461.htm#&position=5&from_view=collections) - Image by Freepik
 
 5. [Waste](https://www.freepik.com/free-vector/mother-earth-day_3992353.htm#query=earth&position=8&from_view=search&track=sph) - Image by Freepik
+
+<br/>
+
+## DISCLAIMER
+
+I must disclose that I have used some photo assets from Freepik.com in the app that I built. However, I have obtained the necessary permissions and licensing from [Freepik.com](https://www.freepik.com) to use their assets in the app which I put on my Github. As a software developer, I must disclose that I have used an open-source font called [Poppins](https://fonts.google.com/specimen/Poppins) in the app that I built, and have made it available on my Github repository under the Open Font License (OFL).
