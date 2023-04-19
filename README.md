@@ -16,7 +16,7 @@ In addition to the mini game, this app also includes a trivia section that teach
 
 ## Getting Started
 
-To get started with this app, simply clone the repository and open the project in Xcode. The app is built using Swift and requires a minimum deployment target of iOS 16.0. This app was built by using iPad Pro 12.9 inch (6th Generation) simulator, I recommend you to use the same simulator for the best experience.
+To get started with this app, simply clone the repository and open the project in Xcode. The app is built using Swift and requires a minimum deployment target of iOS 16.0. This app was built by using iPad Pro 12.9 inch (6th Generation) simulator, I recommend you to use the same simulator for the best experience. The app only works on portrait mode.
 
 ## Credits
 
